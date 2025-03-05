@@ -1,3 +1,3 @@
-{% include 'build.Dockerfile' %}
-RUN apt-get install \
+{% include 'gcc.Dockerfile' %}
+RUN yum install -y \
     python

@@ -356,7 +356,8 @@ if [ -n "${CPYTHON_DEBUG}" ]; then
 fi
 
 if [ -n "${CPYTHON_FREETHREADED}" ]; then
-    CONFIGURE_FLAGS="${CONFIGURE_FLAGS} --disable-gil --with-mimalloc"
+#    CONFIGURE_FLAGS="${CONFIGURE_FLAGS} --disable-gil --with-mimalloc"
+    CONFIGURE_FLAGS="${CONFIGURE_FLAGS} --disable-gil --without-mimalloc"
 fi
 
 if [ -n "${CPYTHON_OPTIMIZED}" ]; then

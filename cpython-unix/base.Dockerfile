@@ -1,6 +1,4 @@
-# Debian Jessie.
-FROM debian@sha256:32ad5050caffb2c7e969dac873bce2c370015c2256ff984b70c1c08b3a2816a0
-MAINTAINER Gregory Szorc <gregory.szorc@gmail.com>
+FROM centos:centos6.10
 
 RUN groupadd -g 1000 build && \
     useradd -u 1000 -g 1000 -d /build -s /bin/bash -m build && \
@@ -17,20 +15,18 @@ ENV HOME=/build \
 CMD ["/bin/bash", "--login"]
 WORKDIR '/build'
 
-# Jessie's signing keys expired in late 2022. So need to add [trusted=yes] to force trust.
-# Jessie stopped publishing snapshots in March 2023.
-RUN for s in debian_jessie debian_jessie-updates debian-security_jessie/updates; do \
-      echo "deb [trusted=yes] http://snapshot.debian.org/archive/${s%_*}/20230322T152120Z/ ${s#*_} main"; \
-    done > /etc/apt/sources.list && \
-    ( echo 'quiet "true";'; \
-      echo 'APT::Get::Assume-Yes "true";'; \
-      echo 'APT::Install-Recommends "false";'; \
-      echo 'Acquire::Check-Valid-Until "false";'; \
-      echo 'Acquire::Retries "5";'; \
-    ) > /etc/apt/apt.conf.d/99cpython-portable
+# ADD https://mirrors.aliyun.com/repo/Centos-vault-6.10.repo /etc/yum.repos.d/CentOS-Base.repo 
+RUN sed -e "s|^mirrorlist=|#mirrorlist=|g" \
+    -e "s|^#baseurl=http://mirror.centos.org/centos/\$releasever|baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos-vault/6.10|g" \
+    -e "s|^#baseurl=http://mirror.centos.org/\$contentdir/\$releasever|baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos-vault/6.10|g" \
+    -i.bak \
+    /etc/yum.repos.d/CentOS-*.repo
 
-RUN ( echo 'amd64'; \
-      echo 'i386'; \
-    ) > /var/lib/dpkg/arch
 
-RUN apt-get update
+ADD http://mirrors.cloud.tencent.com/repo/epel-6.repo /etc/yum.repos.d/epel.repo 
+
+ADD https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0-x86_64.tar.gz /tmp/patchelf.tar.gz
+RUN tar -xavf /tmp/patchelf.tar.gz -C / && /bin/patchelf --version
+
+RUN yum clean all && yum makecache
+

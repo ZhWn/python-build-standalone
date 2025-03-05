@@ -735,7 +735,7 @@ x86_64-unknown-linux-gnu:
   target_cflags:
     - '-fvisibility=hidden'
     # Needed to prevent BOLT from crashing.
-    - '-fdebug-default-version=4'
+    # - '-fdebug-default-version=4'
   needs:
     - autoconf
     - bdb
@@ -750,8 +750,9 @@ x86_64-unknown-linux-gnu:
     - m4
     - mpdecimal
     - ncurses
-    - openssl-3.0
-    - patchelf
+    # - openssl-3.0
+    - openssl-1.1
+    # - patchelf
     - sqlite
     - tcl
     - tk

@@ -205,6 +205,12 @@ DOWNLOADS = {
         "sha256": "3032161d1cadb8996b07fe5762444c956842b5a7d798b2fcfe5a04574fdf7549",
         "version": "18.0.8+20240713",
     },
+	"llvm-3.8-x86_64-linux": {
+        "url": "https://releases.llvm.org/3.8.0/clang%2Bllvm-3.8.0-linux-x86_64-centos6.tar.xz",
+        "size": 149640812,
+        "sha256": "a7142e71db0e20f89a90756e62120cd12030c32d40846b26bf0f715c7a068e51",
+        "version": "3.8.0",
+    },
     "m4": {
         "url": "https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz",
         "size": 1654908,

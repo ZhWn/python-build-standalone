@@ -1,9 +1,24 @@
 {% include 'base.Dockerfile' %}
-RUN apt-get install \
+RUN yum groupinstall "Development Tools"  -y 
+RUN yum install -y \
+    bzip2 \
+    file \
+    glibc-devel \
+    glibc-devel-i386 \
+    libffi-devel \
+    make \
+    patch \
+    perl \
+    pkgconfig \
+    tar \
+    xz \
+    unzip \
+    zip \
+    zlib-devel
+RUN yum install -y \
       autoconf \
       automake \
       bison \
-      build-essential \
       gawk \
       gcc \
       gcc-multilib \
@@ -11,5 +26,6 @@ RUN apt-get install \
       make \
       tar \
       texinfo \
-      xz-utils \
+      xz \
       unzip
+RUN yum install -y clang libcxx-devel

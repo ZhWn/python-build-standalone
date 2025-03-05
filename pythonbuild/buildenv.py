@@ -52,6 +52,15 @@ class ContainerContext(object):
         self.copy_file(p)
         self.run(["/bin/tar", "-C", "/tools", "-xf", "/build/%s" % p.name])
 
+    def install_toolchain_archive1(
+        self, build_dir, package_name, host_platform, version=None
+    ):
+        basename = "unwind_cxx_abi.tar.gz"
+
+        p = build_dir / basename
+        self.copy_file(p)
+        self.run(["/bin/tar", "-C", "/", "-xaf", "/build/%s" % p.name])
+
     def install_artifact_archive(
         self, build_dir, package_name, target_triple, build_options
     ):
@@ -66,7 +75,7 @@ class ContainerContext(object):
         p = build_dir / basename
 
         self.copy_file(p)
-        self.run(["/bin/tar", "-C", "/tools", "-xf", "/build/%s" % p.name])
+        self.run(["/bin/tar", "-C", "/tools","--overwrite", "-xf", "/build/%s" % p.name])
 
     def install_toolchain(
         self,
@@ -82,6 +91,9 @@ class ContainerContext(object):
 
         if clang:
             self.install_toolchain_archive(
+                build_dir, clang_toolchain(host_platform, target_triple), host_platform
+            )
+            self.install_toolchain_archive1(
                 build_dir, clang_toolchain(host_platform, target_triple), host_platform
             )
 

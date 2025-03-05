@@ -10,18 +10,19 @@
 # Compression packages are needed to extract archives.
 #
 # Various other build tools are needed for various building.
-RUN apt-get install \
+
+RUN yum install -y \
     bzip2 \
     file \
-    libc6-dev \
-    libc6-dev:i386 \
-    libffi-dev \
+    glibc-devel \
+    glibc-devel-i386 \
+    libffi-devel \
     make \
     patch \
     perl \
-    pkg-config \
+    pkgconfig \
     tar \
-    xz-utils \
+    xz \
     unzip \
     zip \
-    zlib1g-dev
+    zlib-devel

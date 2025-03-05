@@ -1,0 +1,186 @@
+    1  sudo apt-get update
+    2  sudo apt-get -y install podman
+    3  sudo apt install flatpak
+    4  flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+    5  flatpak install --user flathub io.podman_desktop.PodmanDesktop
+    6  flatpak run io.podman_desktop.PodmanDesktop
+    7  sudo apt install build-essential 
+    8  history 
+    9  sudo flatpak run io.podman_desktop.PodmanDesktop
+   10  flatpak list
+   11  flatpak 
+   12  flatpak --help
+   13  flatpak uninstall io.podman_desktop.PodmanDesktop
+   14  flatpak uninstall --elp
+   15  flatpak uninstall --help
+   16  flatpak uninstall --unused
+   17  cat /etc/group | grep docker
+   18  sudo groupadd docker
+   19  sudo gpasswd -a ${USER} docker
+   20  sudo apt install podman
+   21  history 
+   22  bin/clang
+   23  bin/clang -h
+   24  bin/clang v
+   25  bin/clang -v
+   26  ls
+   27  exit
+   28  cd bin/
+   29  ldd clang
+   30  nm clang
+   31  readelf
+   32  readelf clang
+   33  readelf -s clang
+   34  readelf -s clang | grep glibc
+   35  readelf -s llvm-ar | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   36  readelf -s clag | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   37  readelf -s clang | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   38  ls
+   39  d ..
+   40  cd ..
+   41  ls
+   42  tar -xavf patchelf-0.18.0-x86_64.tar.gz 
+   43  bin/patchelf 
+   44  readelf -s bin/patchelf | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   45  ldd bin/patchelf 
+   46  ls
+   47  rm patchelf-0.18.0-x86_64.tar.gz 
+   48  man tar
+   49  cd build/
+   50  ls
+   51  man xz
+   52  cd downloads/
+   53  ls
+   54  xz -d clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz 
+   55  ls
+   56  cp clang+llvm-3.8.0-linux-x86_64-centos6.tar ../llvm-17-x86_64-linux-17.0.6+20240222-linux64.tar 
+   57  ls
+   58  docker image
+   59  docker image list
+   60  docker image prune
+   61  cd ..
+   62  ls
+   63  llvm/bin/patchelf -V
+   64  llvm/bin/patchelf -h
+   65  llvm/bin/patchelf --version
+   66  install/bin/python3
+   67  history 
+   68  readelf -s install/bin/python3 | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   69  readelf -s install/lib/libpython3.10.so | grep -oE "GLIBCXX_.*|GLIBC_.*" | sort | uniq
+   70  install/bin/python3
+   71  ls
+   72  cd build/
+   73  ls
+   74  vi run_tests.py 
+   75  ../install/bin/python3 run_tests.py 
+   76  ../install/bin/python3
+   77  ls
+   78  cd ../../..
+   79  ls
+   80  cd ..
+   81  ls
+   82  cd ~/python-build-standalone/
+   83  ls
+   84  cd build/
+   85  ls
+   86  find -name '-pgo.tar' *
+   87  find -name '*-pgo.tar' 
+   88  find -name '*-pgo.tar'  -exec rm -rfv {] \;
+   89  find -name '*-pgo.tar' 
+   90  find -name '*-pgo.tar'  -exec rm -rfv {} \;
+   91  find -name '*-lto.tar'  -exec rm -rfv {} \;
+   92  ls
+   93  du -h
+   94  cd ..
+   95  ls
+   96  du -h
+   97  ls
+   98  cd python-build-standalone/
+   99  code .
+  100  python3 build-linux.py --python cpython-3.10 --optimizations pgo --serial --target-triple x86_64-unknown-linux-gnu
+  101  history 
+  102  touch cmd
+  103  vi cmd 
+  104  ls
+  105  python3 build-linux.py --python cpython-3.10 --optimizations pgo --serial --target-triple x86_64-unknown-linux-gnu
+  106  wget https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0-x86_64.tar.gz
+  107  realpath patchelf-0.18.0-x86_64.tar.gz
+  108  python3 build-linux.py --python cpython-3.10 --optimizations pgo --serial --target-triple x86_64-unknown-linux-gnu
+  109  cp patchelf-0.18.0-x86_64.tar.gz build
+  110  python3 build-linux.py --python cpython-3.10 --optimizations pgo --serial --target-triple x86_64-unknown-linux-gnu
+  111  python3 build-linux.py --python cpython-3.10 --optimizations noopt --serial --target-triple x86_64-unknown-linux-gnu
+  112  cd python-build-standalone/
+  113  ls
+  114  history 
+  115  python3 build-linux.py --python cpython-3.13\ --optimizations noopt --serial --target-triple x86_64-unknown-linux-gnu
+  116  python3 build-linux.py --python cpython-3.13 --optimizations noopt --serial --target-triple x86_64-unknown-linux-gnu
+  117  python3 build-linux.py --python cpython-3.12 --optimizations noopt --serial --target-triple x86_64-unknown-linux-gnu
+  118  python3 build-linux.py --python cpython-3.11 --optimizations noopt --serial --target-triple x86_64-unknown-linux-gnu
+  119  git config user.name zhwn
+  120  git config user.email ao.w@qq.com
+  121  ls
+  122  cd python-build-standalone/
+  123  ls
+  124  code .
+  125  git clone https://github.com/kasmtech/workspaces-core-images.git
+  126  git clone https://github.com/kasmtech/workspaces-core-images.git -b release/1.15.0
+  127  cd workspaces-core-images/
+  128  code .
+  129  nslookup archive.ubuntu.com
+  130  sudo vi /etc/docker/daemon.json
+  131  ls -laht /etc/docker
+  132  sudo vi /etc/docker/daemon.json
+  133  sudo service docker restart 
+  134  docker pull kasmweb/core-ubuntu-focal:1.15.0
+  135  cd ..
+  136  git clone https://github.com/kasmtech/workspaces-images.git
+  137  cd workspaces-
+  138  cd workspaces-images/
+  139  ls
+  140  ls -laht
+  141  code .
+  142  cp dockerfile-kasm-wine dockerfile-kasm-bitcomet
+  143  vi ../workspaces-core-images/dockerfile-wine 
+  144  ln -sf ../workspaces-core-images/BitComet.zip .
+  145  ls
+  146  rm BitComet.zip 
+  147  cp ../workspaces-core-images/BitComet.zip .
+  148  vi ../workspaces-core-images/dockerfile-wine 
+  149  sudo service docker restart 
+  150  cd ..
+  151  ls
+  152  git clone https://github.com/linuxserver/docker-baseimage-kasmvnc.git
+  153  cd docker-baseimage-kasmvnc/
+  154  cd ..
+  155  rm -rfv docker-baseimage-kasmvnc/
+  156  git clone https://github.com/linuxserver/docker-baseimage-kasmvnc.git -b ubuntujammy
+  157  cd docker-baseimage-kasmvnc/
+  158  code .
+  159  ls
+  160  cd ..
+  161  ls
+  162  git clone https://github.com/ZhWn/python-build-standalone.git python-build-standalone1
+  163  cd python-build-standalone1
+  164  git pull
+  165  git update
+  166  ls
+  167  ln -sf ../python-build-standalone/build .
+  168  ls
+  169  python3 build-linux.py -h
+  170  python3 build-linux.py --python cpython-3.13 --options freethreaded+pgo -serial --target-triple x86_64-unknown-linux-gnu
+  171  python3 build-linux.py --python cpython-3.13 --options freethreaded+pgo --serial --target-triple x86_64-unknown-linux-gnu
+  172  python3 build-linux.py -h
+  173  python3 build-linux.py --python cpython-3.13 --options freethreaded+pgo --target-triple x86_64-unknown-linux-gnu 
+  174  python3 build-linux.py -h
+  175  python3 build-linux.py --python cpython-3.13 --options freethreaded++noopt --target-triple x86_64-unknown-linux-gnu 
+  176  python3 build-linux.py --python cpython-3.13 --options freethreaded+noopt --target-triple x86_64-unknown-linux-gnu 
+  177  python3 build-linux.py --python cpython-3.13 --options freethreaded+noopt --target-triple x86_64-unknown-linux-gnu  --serial
+  178  code .
+  179  python3 build-linux.py --python cpython-3.13 --options freethreaded+noopt --target-triple x86_64-unknown-linux-gnu  --serial
+  180  realpath unwind_cxx_abi.tar.gz 
+  181  python3 build-linux.py --python cpython-3.13 --options freethreaded+noopt --target-triple x86_64-unknown-linux-gnu  --serial
+  182  man tar
+  183  python3 build-linux.py --python cpython-3.13 --options freethreaded+noopt --target-triple x86_64-unknown-linux-gnu  --serial
+  184  history 
+  185  history  >! 1.txt
+  186  history  > 1.txt

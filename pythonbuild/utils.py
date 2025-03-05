@@ -155,8 +155,8 @@ def write_triples_makefiles(
 
                 image_suffix = settings.get("docker_image_suffix", "")
 
-                lines.append("DOCKER_IMAGE_BUILD := build%s\n" % image_suffix)
-                lines.append("DOCKER_IMAGE_XCB := xcb%s\n" % image_suffix)
+                lines.append("DOCKER_IMAGE_BUILD := gcc%s\n" % image_suffix)
+                lines.append("DOCKER_IMAGE_XCB := gcc%s\n" % image_suffix)
 
                 entry = clang_toolchain(host_platform, triple)
                 lines.append(
@@ -414,7 +414,7 @@ def clang_toolchain(host_platform: str, target_triple: str) -> str:
         if "musl" in target_triple:
             return "llvm-14-x86_64-linux"
         else:
-            return "llvm-18-x86_64-linux"
+            return "llvm-3.8-x86_64-linux"
     elif host_platform == "macos":
         if platform.mac_ver()[2] == "arm64":
             return "llvm-aarch64-macos"

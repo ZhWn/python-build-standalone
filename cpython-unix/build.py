@@ -5,6 +5,7 @@
 
 import argparse
 import json
+import lzma
 import os
 import pathlib
 import platform
@@ -245,7 +246,7 @@ def simple_build(
                 host_platform,
                 target_triple,
                 binutils=install_binutils(host_platform),
-                clang=True,
+                clang=False,
                 musl="musl" in target_triple,
             )
 
@@ -305,6 +306,13 @@ def materialize_clang(host_platform: str, target_triple: str):
         host_platform,
     )
 
+    if tar_zst.endswith('xz'):
+        with lzma.open(tar_zst, "rb") as ifh:
+            with open(BUILD / local_filename, "wb") as ofh:
+                while b:=ifh.read(1024):
+                    ofh.write(b)
+        return
+    
     dctx = zstandard.ZstdDecompressor()
 
     with open(tar_zst, "rb") as ifh:
